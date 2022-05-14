@@ -1,7 +1,7 @@
 import unittest
 
 from Figure import Color, FigureCode, Figure
-from Board import Board
+from Board import Board, optimize_fen
 
 class TestBoard(unittest.TestCase):
     def get_board(self):
@@ -57,9 +57,14 @@ class TestBoard(unittest.TestCase):
             f22
         ])
         b.sort_figures()
-        self.assertEqual(b.process_fen_line(0), '0K000000')
-        self.assertEqual(b.process_fen_line(1), 'bn000000')
-        self.assertEqual(b.process_fen_line(2), 'Q0r00000')
+        self.assertEqual(b.process_fen_line(0), '1K6')
+        self.assertEqual(b.process_fen_line(1), 'bn6')
+        self.assertEqual(b.process_fen_line(2), 'Q1r5')
+
+    def test_fen_optimize(self):
+        self.assertEqual(optimize_fen('00000000'), '8')
+        self.assertEqual(optimize_fen('0000r000'), '4r3')
+        self.assertEqual(optimize_fen('R000r000'), 'R3r3')
 
 if __name__ == '__main__':
     unittest.main()

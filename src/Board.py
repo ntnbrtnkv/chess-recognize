@@ -3,6 +3,7 @@ import json
 import statistics
 import sys
 import bisect
+import re
 
 from Figure import FigureCode, FigureEncoder
 from Recognition import Figure
@@ -11,7 +12,7 @@ from log import get_logger
 logger = get_logger('OKChess')
 
 def optimize_fen(s):
-    pass
+    return re.sub(f'{FigureCode.Space.value}+', lambda m: str(len(m[0])), s)
 
 class Board:
     def __init__(self):
@@ -84,6 +85,8 @@ class Board:
             else:
                 res += FigureCode.Space.value
             x += self.width
+
+        res = optimize_fen(res)
 
         self.fen_list[ind] = res
         
