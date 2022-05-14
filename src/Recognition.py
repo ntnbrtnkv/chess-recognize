@@ -6,15 +6,16 @@ import glob
 
 from Figure import Color, FigureCode, Figure
 
-# METHOD = cv.TM_CCOEFF_NORMED
 METHOD = cv.TM_SQDIFF_NORMED
 
-def treshhold(c: Color):
-    if c == Color.Black:
-        return 0.85
-    return 0.95
+def treshhold(code: FigureCode, color: Color):
+    if code == FigureCode.Space:
+        return 0.985
+    if color == Color.White:
+        return 0.95
+    return 0.9
 
-COLLAPSE_PIXELS = 20
+COLLAPSE_PIXELS = 25
 
 class Recognition:
     @staticmethod
@@ -22,7 +23,6 @@ class Recognition:
         if code == FigureCode.Space:
             return f'templates/{code.value}/*.png'
         return f'templates/{code.value}/{color.value}/*.png'
-        # return f'templates/p/w/*.png'
 
     @staticmethod
     def distance(a, b):
@@ -37,7 +37,6 @@ class Recognition:
                 template_glob = Recognition.get_glob(code, color)
                 loc_collector = []
                 for path in glob.glob(template_glob):
-                    # template = cv.imread(path, cv.IMREAD_GRAYSCALE)
                     template = cv.imread(path, cv.IMREAD_UNCHANGED)
                     loc = None
                     scalings = np.linspace(0.6, 1.4, 9)[::-1] if global_scale is None else (global_scale,)
@@ -51,7 +50,7 @@ class Recognition:
                         if METHOD == 0 or METHOD == 1:
                             res = (2 - res) / 2
                         
-                        loc = np.where( res >= treshhold(color) )
+                        loc = np.where( res >= treshhold(code, color) )
                         if loc is None:
                             continue
                         global_scale = scale

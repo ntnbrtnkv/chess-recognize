@@ -5,17 +5,17 @@ import json
 import numpy
 
 class Color(Enum):
-    Black: str = 'b'
     White: str = 'w'
+    Black: str = 'b'
 
 class FigureCode(Enum):
     Pawn: str = 'p'
+    King: str = 'k'
     Knight: str = 'n'
     Bishop: str = 'b'
-    Rook: str = 'r'
-    Queen: str = 'q'
-    King: str = 'k'
     Space: str = '0'
+    Queen: str = 'q'
+    Rook: str = 'r' # should be last because of broken black on black pattern
 
 
 class Figure(object):

@@ -14,7 +14,7 @@ class TestFigures(unittest.TestCase):
 
     def test_serialization(self):
         bishop = Figure(FigureCode.King, Color.Black, 1.0, 0, 62, 62)
-        self.assertEqual('{"color": "b", "code": "k", "x": 1, "y": 0, "w": 62, "h": 62}', json.dumps(bishop, cls=FigureEncoder))
+        self.assertEqual('{"color": "b", "code": "k", "x": 1.0, "y": 0, "w": 62, "h": 62}', json.dumps(bishop, cls=FigureEncoder))
 
 if __name__ == '__main__':
     unittest.main()
