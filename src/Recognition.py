@@ -10,7 +10,7 @@ METHOD = cv.TM_SQDIFF_NORMED
 
 def treshhold(code: FigureCode, color: Color):
     if code == FigureCode.Space:
-        return 0.99
+        return 0.999
     if color == Color.White:
         return 0.95
     return 0.87

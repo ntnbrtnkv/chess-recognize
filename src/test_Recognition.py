@@ -25,3 +25,6 @@ class TestRecognition(unittest.TestCase):
 
     def test_example_6(self):
         self.recognize('6', '3rk2k/pb5p/1p3pn1/2pP1N2/5P2/1P4Q1/P5PK/1B2R3')
+
+    def test_example_7(self):
+        self.recognize('7', '8/8/8/1pP5/1P4PP/8/8/8')
