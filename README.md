@@ -7,7 +7,7 @@ Parse FEN from clipboard image and analyse on https://lichess.org
 
 ![img](screen.png)
 
-See [releases page](releases) for executable files
+See [releases page](https://github.com/ntnbrtnkv/chess-recognize/releases) for executable files
 
 Build with TkInter
 
