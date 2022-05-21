@@ -6,6 +6,7 @@ import glob
 
 from Board import Board
 from Figure import Color, FigureCode, Figure
+from resourse_path import resource_path
 
 METHOD = cv.TM_SQDIFF_NORMED
 
@@ -22,8 +23,8 @@ class Recognition:
     @staticmethod
     def get_glob(code, color):
         if code == FigureCode.Space:
-            return f'templates/{code.value}/*.png'
-        return f'templates/{code.value}/{color.value}/*.png'
+            return resource_path(f'templates/{code.value}/*.png')
+        return resource_path(f'templates/{code.value}/{color.value}/*.png')
 
     @staticmethod
     def distance(a, b):

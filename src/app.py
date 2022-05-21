@@ -7,13 +7,14 @@ from Exporter import LichessExporter
 
 from Recognition import Recognition
 from HyperlinkManager import HyperlinkManager
+from resourse_path import resource_path
 
 window = Tk()
-window.title("Chess board parser")
+window.iconbitmap(resource_path("icon.ico"))
+window.title("Chess Recognize")
 
 Grid.rowconfigure(window, 0, weight=0)
 Grid.rowconfigure(window, 1, weight=1)
-Grid.rowconfigure(window, 2, weight=0)
 Grid.columnconfigure(window, 0, weight=1)
 
 TMP_FILENAME = 'tmp.png'
@@ -59,6 +60,6 @@ def redirector(inputStr):
     textbox.insert(END, inputStr + '\n')
 
 sys.stdout.write = redirector
-print('OUTPUT')
+print('Output')
 
 window.mainloop()
