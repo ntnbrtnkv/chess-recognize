@@ -4,6 +4,7 @@ import numpy as np
 import imutils
 import glob
 
+from Board import Board
 from Figure import Color, FigureCode, Figure
 
 METHOD = cv.TM_SQDIFF_NORMED
@@ -70,4 +71,14 @@ class Recognition:
                     if need_to_add:
                         result.append(figure)
         return result
-        
+
+    @staticmethod
+    def get_fen(img_path):
+        img = cv.imread(img_path, cv.IMREAD_UNCHANGED)
+        res = Recognition.find_figures(img)
+        b = Board()
+        return (
+            b.get_fen_by_figures(res),
+            res,
+            img
+        )

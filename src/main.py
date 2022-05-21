@@ -1,10 +1,7 @@
 import cv2 as cv
 from matplotlib import pyplot as plt
-from Board import Board
 
 from Recognition import Recognition
-
-img = cv.imread('examples/5.png', cv.IMREAD_UNCHANGED)
 
 def add_data(img, points):
     for pt in points:
@@ -18,9 +15,8 @@ def show_plot(img):
     plt.show()
 
 def find():
-    res = Recognition.find_figures(img)
-    b = Board()
-    print(b.get_fen_by_figures(res))
+    fen, res, img = Recognition.get_fen('examples/5.png')
+    print(fen)
     add_data(img, res)
     show_plot(img)
 

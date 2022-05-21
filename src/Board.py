@@ -5,8 +5,7 @@ import sys
 import bisect
 import re
 
-from Figure import FigureCode, FigureEncoder
-from Recognition import Figure
+from Figure import FigureCode, FigureEncoder, Figure
 from log import get_logger
 
 logger = get_logger('OKChess')
